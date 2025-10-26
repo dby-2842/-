@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <style>
+        /* 全局样式重置，与登录页保持一致 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        /* 同登录页的渐变背景，确保风格统一 */
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 注册卡片：与登录页尺寸、阴影一致 */
+        .register-container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            padding: 40px 30px;
+        }
+
+        /* 注册标题：样式匹配登录页标题 */
+        .register-title {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* 表单组：间距与登录页一致 */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        /* 输入框：完全复用登录页样式，保证交互统一 */
+        .form-group input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* 注册按钮：与登录按钮样式一致，保持操作感统一 */
+        .register-btn {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .register-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .register-btn:active {
+            transform: translateY(0);
+        }
+
+        /* 登录链接：样式匹配注册链接，位置对称 */
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .login-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2 class="register-title">用户注册</h2>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="请输入用户名" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="请输入密码" required>
+            </div>
+            <button type="submit" class="register-btn">注册</button>
+            <a href="/" class="login-link">已有账号？去登录</a>
+        </form>
+    </div>
+</body>
+</html>

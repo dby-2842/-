@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        /* 页面背景：渐变色+居中对齐 */
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 登录卡片：白色背景+阴影+圆角 */
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            padding: 40px 30px;
+        }
+
+        /* 标题样式 */
+        .login-title {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* 表单组：控制输入框间距 */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        /* 输入框样式：圆角+边框+内边距 */
+        .form-group input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        /* 输入框聚焦效果：蓝色边框+轻微放大 */
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* 占位符文字样式 */
+        .form-group input::placeholder {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* 登录按钮：渐变色+圆角+无边框 */
+        .login-btn {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        /* 按钮hover效果：透明度变化+轻微缩放 */
+        .login-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 按钮点击效果：恢复缩放 */
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        /* 注册链接：居中+颜色+间距 */
+        .register-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        /* 链接hover效果：加深颜色 */
+        .register-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-title">用户登录</h2>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="请输入用户名" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="请输入密码" required>
+            </div>
+            <button type="submit" class="login-btn">登录</button>
+            <a href="/register" class="register-link">还没有账号？去注册</a>
+        </form>
+    </div>
+</body>
+</html>
