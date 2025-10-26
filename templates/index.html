@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
+    <title>段冰园 - 个人主页</title>
     <style>
-        /* 全局样式：复用登录/注册页的基础风格 */
+        /* 全局样式 */
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +13,7 @@
             font-family: 'Microsoft YaHei', Arial, sans-serif;
         }
 
-        /* 渐变背景：与登录页一致，保持风格统一 */
+        /* 渐变背景 */
         body {
             min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -21,7 +21,7 @@
             padding: 20px;
         }
 
-        /* 顶部导航栏：简洁且固定顶部 */
+        /* 顶部导航栏 */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -38,7 +38,6 @@
             font-weight: 600;
         }
 
-        /* 导航按钮：hover效果统一 */
         .nav-btn {
             padding: 8px 16px;
             background-color: rgba(255, 255, 255, 0.2);
@@ -56,65 +55,145 @@
             background-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* 主页内容区：居中展示 */
+        /* 主页内容区 */
         .main-content {
             max-width: 1000px;
             margin: 0 auto;
-            text-align: center;
-            padding: 40px 20px;
+            padding: 40px 30px;
             background-color: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
             border-radius: 12px;
         }
 
-        .main-content h1 {
+        /* 个人信息头部 */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-header h1 {
             font-size: 36px;
-            margin-bottom: 20px;
-            line-height: 1.4;
+            margin-bottom: 10px;
         }
 
-        .main-content p {
+        .job-title {
             font-size: 18px;
-            margin-bottom: 30px;
             opacity: 0.9;
+            margin-bottom: 20px;
         }
 
-        /* 功能卡片区：网格布局，适配不同屏幕 */
-        .feature-cards {
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        /* 内容区块通用样式 */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 教育经历 */
+        .education {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* 技能展示 */
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-            margin-bottom: 40px; /* 给下方退出按钮留间距 */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
-        .card {
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 30px;
+        .skill-category {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .skill-category h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        /* 项目经验 */
+        .projects {
+            display: grid;
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
             border-radius: 10px;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .card:hover {
+        .project-card:hover {
             transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
-        .card h3 {
-            font-size: 20px;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .project-date {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .project-role {
+            font-size: 14px;
             margin-bottom: 15px;
+            opacity: 0.9;
         }
 
-        .card p {
+        .project-description {
             font-size: 15px;
-            opacity: 0.85;
-            margin-bottom: 0;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
-        /* 退出按钮样式：与导航按钮风格统一，居中显示 */
+        /* 退出按钮 */
         .logout-btn {
+            display: inline-block;
+            margin-top: 20px;
             padding: 10px 24px;
-            background-color: rgba(239, 68, 68, 0.7); /* 红色系，区分普通按钮，提示退出操作 */
+            background-color: rgba(239, 68, 68, 0.7);
             border: none;
             border-radius: 8px;
             color: #fff;
@@ -127,42 +206,163 @@
         .logout-btn:hover {
             background-color: rgba(239, 68, 68, 0.9);
         }
+
+        .logout-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+            }
+            
+            .profile-header h1 {
+                font-size: 28px;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- 顶部导航栏：包含logo和登录/注册入口 -->
+    <!-- 顶部导航栏 -->
     <nav class="navbar">
-        <div class="logo">我的网站</div>
+        <div class="logo">个人主页</div>
         <div class="nav-buttons">
-            <a href="/" class="nav-btn">登录</a>
-            <a href="/register" class="nav-btn">注册</a>
+            {% if not user %}
+                <a href="/" class="nav-btn">登录</a>
+                <a href="/register" class="nav-btn">注册</a>
+            {% endif %}
         </div>
     </nav>
 
     <!-- 主页核心内容 -->
     <div class="main-content">
-        <h1>欢迎来到我的主页</h1>
-        <p>已登录用户可在此访问全部功能，未登录用户请先登录或注册</p>
-        
-        <!-- 功能卡片：展示网站核心功能（可根据需求修改） -->
-        <div class="feature-cards">
-            <div class="card">
-                <h3>功能一</h3>
-                <p>这里可以展示网站的核心功能描述，比如数据管理、信息查询等</p>
-            </div>
-            <div class="card">
-                <h3>功能二</h3>
-                <p>根据实际需求补充功能说明，让用户快速了解网站价值</p>
-            </div>
-            <div class="card">
-                <h3>功能三</h3>
-                <p>支持自定义内容，适配不同场景（如个人博客、工具网站等）</p>
+        <!-- 个人信息头部 -->
+        <div class="profile-header">
+            <h1>段冰园</h1>
+            <div class="job-title">求职意向：Python开发实习生，Python应用实习生，Python工程师</div>
+            <div class="contact-info">
+                <div>性别：男 | 出生日期：2004-2-11</div>
+                <div>现居城市：北京市 | 籍贯：河南省-驻马店市</div>
+                <div>电话：18300796941 | 邮箱：2842888415@qq.com</div>
             </div>
         </div>
 
-        <!-- 新增：退出按钮（仅登录后显示，需配合后端Session） -->
-        {% if user %} <!-- 用Jinja2语法判断：仅当用户登录（有user数据）时显示 -->
-            <a href="/logout" class="logout-btn">退出登录</a>
+        <!-- 教育经历 -->
+        <div class="section">
+            <h2 class="section-title">教育经历</h2>
+            <div class="education">
+                <p>2022-09至今 河南科技学院 信息管理与信息系统(本科)</p>
+                <p>大学英语考试四级486分</p>
+            </div>
+        </div>
+
+        <!-- 语言能力 -->
+        <div class="section">
+            <h2 class="section-title">语言能力</h2>
+            <p>英语：听说（良好）读写（良好）</p>
+        </div>
+
+        <!-- 技能展示 -->
+        <div class="section">
+            <h2 class="section-title">技能特长</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>后端开发</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">ORM</span>
+                        <span class="skill-tag">Blueprint</span>
+                        <span class="skill-tag">Session</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>数据库</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">连接池</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">多表关联</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>前端技术</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Jinja2</span>
+                        <span class="skill-tag">响应式设计</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>运维与工具</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Windows</span>
+                        <span class="skill-tag">Shell脚本</span>
+                        <span class="skill-tag">异步任务队列</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 项目经验 -->
+        <div class="section">
+            <h2 class="section-title">项目经验</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">基于Python+Django的仿CSDN技术博客平台开发</div>
+                        <div class="project-date">2025-07至2025-07</div>
+                    </div>
+                    <div class="project-role">独立开发者（负责需求分析、技术选型、前后端开发全流程）</div>
+                    <div class="project-description">
+                        为实践Python Web开发技能，独立搭建仿CSDN的技术博客平台，支持用户注册登录、文章发布（含Markdown编辑）、评论互动、标签分类及文章搜索功能。<br><br>
+                        技术选型：后端采用Django框架快速构建Web应用，借助Django ORM实现与MySQL数据库的交互（存储用户/文章/评论/标签数据）；前端使用Bootstrap开发响应式页面，适配PC端；通过Django内置ORM查询优化实现文章关键词搜索，提升基础检索效率。<br><br>
+                        完成核心模块开发：基于DjangoAuth扩展用户认证体系（含登录、注册、权限控制）、文章发布/编辑/展示/删除全流程功能、评论互动逻辑及标签创建/关联/管理模块，实现博客平台从用户交互到数据管理的完整闭环。
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">基于Python+Flask的订单管理平台开发</div>
+                        <div class="project-date">2025-09至2025-09-10</div>
+                    </div>
+                    <div class="project-role">独立开发者（负责需求分析、技术选型、前后端开发全流程）</div>
+                    <div class="project-description">
+                        为深化Python Web开发与后端架构设计能力，独立开发集"订单全流程管理+异步任务处理+权限控制"于一体的订单管理平台。<br><br>
+                        技术选型：后端采用Flask框架实现轻量高效的Web服务，通过蓝图（Blueprint）完成模块化路由拆分；借助dbutils.pooled_db构建MySQL连接池，优化数据库连接复用效率，搭配Redis实现异步任务队列与缓存，解耦耗时业务（如订单关联任务处理）；前端基于Bootstrap 5开发响应式界面，实现动态数据渲染，适配多终端使用场景。<br><br>
+                        核心功能模块：分层权限管理体系、订单全生命周期管理、异步任务处理体系，设计"生产者-消费者"模型保障任务不丢失。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 证书信息 -->
+        <div class="section">
+            <h2 class="section-title">获得证书</h2>
+            <p>大学英语四级</p>
+        </div>
+
+        <!-- 退出按钮 -->
+        {% if user %}
+            <div class="logout-container">
+                <a href="/logout" class="logout-btn">退出登录</a>
+            </div>
         {% endif %}
     </div>
 </body>

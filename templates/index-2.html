@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        /* 全局样式：复用登录/注册页的基础风格 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        /* 渐变背景：与登录页一致，保持风格统一 */
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* 顶部导航栏：简洁且固定顶部 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        /* 导航按钮：hover效果统一 */
+        .nav-btn {
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 主页内容区：居中展示 */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+        }
+
+        .main-content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* 功能卡片区：网格布局，适配不同屏幕 */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            margin-bottom: 40px; /* 给下方退出按钮留间距 */
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 15px;
+            opacity: 0.85;
+            margin-bottom: 0;
+        }
+
+        /* 退出按钮样式：与导航按钮风格统一，居中显示 */
+        .logout-btn {
+            padding: 10px 24px;
+            background-color: rgba(239, 68, 68, 0.7); /* 红色系，区分普通按钮，提示退出操作 */
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(239, 68, 68, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏：包含logo和登录/注册入口 -->
+    <nav class="navbar">
+        <div class="logo">我的网站</div>
+        <div class="nav-buttons">
+            <a href="/" class="nav-btn">登录</a>
+            <a href="/register" class="nav-btn">注册</a>
+        </div>
+    </nav>
+
+    <!-- 主页核心内容 -->
+    <div class="main-content">
+        <h1>欢迎来到我的主页</h1>
+        <p>已登录用户可在此访问全部功能，未登录用户请先登录或注册</p>
+        
+        <!-- 功能卡片：展示网站核心功能（可根据需求修改） -->
+        <div class="feature-cards">
+            <div class="card">
+                <h3>功能一</h3>
+                <p>这里可以展示网站的核心功能描述，比如数据管理、信息查询等</p>
+            </div>
+            <div class="card">
+                <h3>功能二</h3>
+                <p>根据实际需求补充功能说明，让用户快速了解网站价值</p>
+            </div>
+            <div class="card">
+                <h3>功能三</h3>
+                <p>支持自定义内容，适配不同场景（如个人博客、工具网站等）</p>
+            </div>
+        </div>
+
+        <!-- 新增：退出按钮（仅登录后显示，需配合后端Session） -->
+        {% if user %} <!-- 用Jinja2语法判断：仅当用户登录（有user数据）时显示 -->
+            <a href="/logout" class="logout-btn">退出登录</a>
+        {% endif %}
+    </div>
+</body>
+</html>
